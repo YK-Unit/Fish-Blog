@@ -67,9 +67,10 @@ jobs:
 
     # Deploy YorkFish Blog
     # from: https://github.com/marketplace/actions/hexo-action
+    # fix https://github.com/sma11black/hexo-action/issues/31  highlight_alias.js Error: EACCES: permission denied, open 'highlight_alias.json' 
     - name: Deploy Blog
       id: deploy
-      uses: sma11black/hexo-action@v1.0.4
+      uses: QyInvoLing/hexo-action@1.0.6
       with:
         deploy_key: ${{ secrets.FISH_BLOG_DEPLOY_KEY }}
         user_name: "York"  # (or delelte this input setting to use bot account)
