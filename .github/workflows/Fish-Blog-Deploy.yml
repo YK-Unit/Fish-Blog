@@ -29,15 +29,21 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     # from: https://github.com/actions/checkout  
     - name: Checkout Codes
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive # recursively checkout submodules
 
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
-      uses: actions/setup-node@v4.0.0
+      uses: actions/setup-node@v4
       with:
-        node-version: "16.x"
+        node-version: 20
+        cache: 'npm'
+        
+    - name: test npm
+      run: |
+        npm ci
+        npm test
 
     - name: Setup Hexo Env
       run: |
@@ -64,7 +70,7 @@ jobs:
       id: deploy
       uses: sma11black/hexo-action@v1.0.3
       with:
-        deploy_key: ${{ secrets.YORK_BLOG_DEPLOY_ID_ED25519 }}
+        deploy_key: ${{ secrets.FISH_BLOG_DEPLOY_KEY }}
         user_name: "York"  # (or delelte this input setting to use bot account)
         user_email: "yorkzhang520@gmail.com"  # (or delelte this input setting to use bot account)
         commit_msg: ${{ env.SITE_UPDATED_LOG }}  # (or delelte this input setting to use hexo default settings)
