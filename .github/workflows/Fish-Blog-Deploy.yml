@@ -34,7 +34,7 @@ jobs:
         submodules: recursive # recursively checkout submodules
 
     - name: Fix permissions
-      run: sudo chmod -R 755 .
+      run: sudo chown -R `whoami` /usr/local/lib/node_modules
 
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
