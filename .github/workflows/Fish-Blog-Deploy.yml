@@ -33,9 +33,6 @@ jobs:
       with:
         submodules: recursive # recursively checkout submodules
 
-    - name: Fix permissions
-      run: sudo chown -R `whoami` /usr/local/lib/node_modules
-
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
       uses: actions/setup-node@v4
@@ -44,12 +41,13 @@ jobs:
 
     - name: Setup Hexo Env
       run: |
+        echo "cur dir: $(pwd)"
         echo "show current content before install"
         ls -a 
         npm ci
         npm install hexo-cli --save
         npm install
-        ehco "show current content before install"
+        echo "show current content after install"
         la -a
 
 
@@ -71,7 +69,7 @@ jobs:
     # from: https://github.com/marketplace/actions/hexo-action
     - name: Deploy Blog
       id: deploy
-      uses: sma11black/hexo-action@v1.0.3
+      uses: sma11black/hexo-action@v1.0.4
       with:
         deploy_key: ${{ secrets.FISH_BLOG_DEPLOY_KEY }}
         user_name: "York"  # (or delelte this input setting to use bot account)
