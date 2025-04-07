@@ -39,12 +39,10 @@ jobs:
       with:
         node-version: 16
         
-    - name: Setup NPM CI ENV
+    - name: Setup NPM ENV
       run: |
         npm ci
-
-    - name: Configure npm global path
-      run: |
+        echo "Configure npm global path now ..."
         mkdir -p ~/.npm-global
         npm config set prefix ~/.npm-global
         echo "PATH=$HOME/.npm-global/bin:$PATH" >> $GITHUB_PATH
@@ -54,11 +52,9 @@ jobs:
         npm install hexo-cli -g
         npm install
 
-    - name: Verify versions
+    - name: Verify Versions
       run: |
-        node -v
-        npm -v
-        hexo -v
+        echo "node version:${node -v} , npm version:${npm -v}"
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
