@@ -1028,6 +1028,36 @@ now new a Chicken...</code></pre><p>由结果可以验证了class method 是可�
       </tags>
   </entry>
   <entry>
+    <title>在Mac下使用Atom搭建C开发环境</title>
+    <url>/2017/%E5%9C%A8Mac%E4%B8%8B%E4%BD%BF%E7%94%A8Atom%E6%90%AD%E5%BB%BAC%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/readme/</url>
+    <content><![CDATA[<p>在 Mac 下写 C 的时候，如果程序并不复杂，其实蛮不愿意打开 Xcode 这个庞然大物的。为此，特意找时间解决了这个事情：<code>Atom</code> + <code>Atom 插件</code> = <code>C 轻量级 IDE</code>。</p>
+<p>下面将会列出所用到的主要插件：</p>
+<ul>
+<li><p><a href="https://atom.io/packages/autocomplete-clang">autocomplete-clang</a><br>autocomplete for C/C++/ObjC using clang</p>
+</li>
+<li><p><a href="https://atom.io/packages/build">build</a><br>Build your current project, directly from Atom</p>
+</li>
+<li><p><a href="https://atom.io/packages/linter">linter</a><br>A Base Linter with Cow Powers to visualize errors and other kind-of messages, easily</p>
+</li>
+<li><p><a href="https://atom.io/packages/linter-clang">linter-clang</a><br>A linter plugin for <a href="https://atom.io/packages/linter">Linter</a> provides an interface to clang</p>
+</li>
+<li><p><a href="https://atom.io/packages/script">script</a><br>Run code in Atom!</p>
+<blockquote>
+<p>在 Mac 下，按 cmd-i ，该插件就会调用 clang 编译并运行当前的 c 程序</p>
+</blockquote>
+</li>
+</ul>
+<p>安装完毕后，开始你的 C 旅程吧~</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>2017</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>配置多个SSH-Key</title>
     <url>/2017/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/readme/</url>
     <content><![CDATA[<p>为了安全性，个人的github和公司的gitlab需要配置不同的SSH-Key。具体如下：</p>
@@ -1060,36 +1090,6 @@ now new a Chicken...</code></pre><p>由结果可以验证了class method 是可�
 <p> 以上表示成功连接到了个人的github。<br> 然后可以用同样方式测试公司的gitlab。</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>教程</tag>
-        <tag>2017</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Mac下使用Atom搭建C开发环境</title>
-    <url>/2017/%E5%9C%A8Mac%E4%B8%8B%E4%BD%BF%E7%94%A8Atom%E6%90%AD%E5%BB%BAC%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/readme/</url>
-    <content><![CDATA[<p>在 Mac 下写 C 的时候，如果程序并不复杂，其实蛮不愿意打开 Xcode 这个庞然大物的。为此，特意找时间解决了这个事情：<code>Atom</code> + <code>Atom 插件</code> = <code>C 轻量级 IDE</code>。</p>
-<p>下面将会列出所用到的主要插件：</p>
-<ul>
-<li><p><a href="https://atom.io/packages/autocomplete-clang">autocomplete-clang</a><br>autocomplete for C/C++/ObjC using clang</p>
-</li>
-<li><p><a href="https://atom.io/packages/build">build</a><br>Build your current project, directly from Atom</p>
-</li>
-<li><p><a href="https://atom.io/packages/linter">linter</a><br>A Base Linter with Cow Powers to visualize errors and other kind-of messages, easily</p>
-</li>
-<li><p><a href="https://atom.io/packages/linter-clang">linter-clang</a><br>A linter plugin for <a href="https://atom.io/packages/linter">Linter</a> provides an interface to clang</p>
-</li>
-<li><p><a href="https://atom.io/packages/script">script</a><br>Run code in Atom!</p>
-<blockquote>
-<p>在 Mac 下，按 cmd-i ，该插件就会调用 clang 编译并运行当前的 c 程序</p>
-</blockquote>
-</li>
-</ul>
-<p>安装完毕后，开始你的 C 旅程吧~</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2620,6 +2620,28 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
       </tags>
   </entry>
   <entry>
+    <title>为何重启个人博客？</title>
+    <url>/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/</url>
+    <content><![CDATA[<p>为何重启个人博客？</p>
+<p>这个问题很早就想发文表达了，如今时机终于到了——在这个人博客重建完毕的时候，可以好好的来对此说说了。</p>
+<p>重启个人博客的念头源自18年8月简书创作平台发的一则公告：</p>
+<p><img src="/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/%E7%AE%80%E4%B9%A6%E5%85%AC%E5%91%8A.png" alt="简书公告"></p>
+<p>翻阅《网络安全法》，并没有出现要求绑定“微信”的明文要求，而行业内，“网络运营者”（使用国法里的称法）的常规做法也只是要求用户绑定手机号即可——很明显地，简书这是在假借国法，浑水摸鱼，愚弄用户。</p>
+<p>坦白而言，简书是我很喜欢的一个写作平台，它的优秀写作体验，甚至让我做了停止搭建个人博客，专注于写作本身的决定——这在当时的简书个人介绍上可见一斑：</p>
+<p><img src="/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D.png" alt="简书个人介绍"></p>
+<p>然而，甚是没想到简书对用户如此毫无尊重和敬畏，所以在那之后，决定了迁移到<a href="https://juejin.im/user/569db819816dfa005959d881">掘金</a>上进行写作。</p>
+<p>那，既然已经有另一个平台供写作了，为何还是要重启个人博客呢？</p>
+<p>为何“要”呢？</p>
+<p>人生来之时是善还是恶，这无法定论。但是，人生来之后，却无法保证自身不作恶。平台是人搭建的，自是平台也无法保证自身不作恶。所以必须重启个人博客，对自己的文章进行备份，以在所寄身的写作平台在作恶之时，有路可退。</p>
+]]></content>
+      <categories>
+        <category>人文</category>
+      </categories>
+      <tags>
+        <tag>2020</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows与Unix/Linux的区别</title>
     <url>/2020/Windows%E4%B8%8EUnix:Linux%E7%9A%84%E5%8C%BA%E5%88%AB/readme/</url>
     <content><![CDATA[<h2 id="在产品层面，Windows与Unix-Linux的区别"><a href="#在产品层面，Windows与Unix-Linux的区别" class="headerlink" title="在产品层面，Windows与Unix/Linux的区别"></a>在产品层面，Windows与Unix/Linux的区别</h2><p>在产品层面上，Windows与Unix/Linux的区别主要体现在二者服务的对象和应用场景上：</p>
@@ -2652,28 +2674,6 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
 <li><a href="https://blog.csdn.net/dog250/article/details/96362789">《为什么Windows/iOS操作很流畅而Linux/Android却很卡顿呢》</a></li>
 <li><a href="https://blog.csdn.net/dog250/article/details/96500186">《Linux桌面GUI系统的调度器应该怎么做才不卡顿呢？》</a></li>
 </ul>
-]]></content>
-      <categories>
-        <category>人文</category>
-      </categories>
-      <tags>
-        <tag>2020</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为何重启个人博客？</title>
-    <url>/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/</url>
-    <content><![CDATA[<p>为何重启个人博客？</p>
-<p>这个问题很早就想发文表达了，如今时机终于到了——在这个人博客重建完毕的时候，可以好好的来对此说说了。</p>
-<p>重启个人博客的念头源自18年8月简书创作平台发的一则公告：</p>
-<p><img src="/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/%E7%AE%80%E4%B9%A6%E5%85%AC%E5%91%8A.png" alt="简书公告"></p>
-<p>翻阅《网络安全法》，并没有出现要求绑定“微信”的明文要求，而行业内，“网络运营者”（使用国法里的称法）的常规做法也只是要求用户绑定手机号即可——很明显地，简书这是在假借国法，浑水摸鱼，愚弄用户。</p>
-<p>坦白而言，简书是我很喜欢的一个写作平台，它的优秀写作体验，甚至让我做了停止搭建个人博客，专注于写作本身的决定——这在当时的简书个人介绍上可见一斑：</p>
-<p><img src="/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D.png" alt="简书个人介绍"></p>
-<p>然而，甚是没想到简书对用户如此毫无尊重和敬畏，所以在那之后，决定了迁移到<a href="https://juejin.im/user/569db819816dfa005959d881">掘金</a>上进行写作。</p>
-<p>那，既然已经有另一个平台供写作了，为何还是要重启个人博客呢？</p>
-<p>为何“要”呢？</p>
-<p>人生来之时是善还是恶，这无法定论。但是，人生来之后，却无法保证自身不作恶。平台是人搭建的，自是平台也无法保证自身不作恶。所以必须重启个人博客，对自己的文章进行备份，以在所寄身的写作平台在作恶之时，有路可退。</p>
 ]]></content>
       <categories>
         <category>人文</category>
@@ -2743,27 +2743,6 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
         <tag>OS</tag>
         <tag>2020</tag>
         <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>当用户第一次点击App（App启动流程）</title>
-    <url>/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当用户第一次点击iPhone手机屏幕上的一个App 图标时，该APP将会被iOS加载启动起来。</p>
-<p>下面将会讲述这加载启动背后的相关知识点，比如：</p>
-<ul>
-<li>App的启动类型</li>
-<li>App冷启动的完整过程</li>
-<li>App的冷启动优化手段</li>
-<li>可执行文件的介绍</li>
-</ul>
-<p><img src="/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/iOS-App-Launch.svg" alt="image"></p>
-]]></content>
-      <categories>
-        <category>知识复盘</category>
-      </categories>
-      <tags>
-        <tag>2020</tag>
-        <tag>EveryThingFromTheFirstClick(iOS Version)</tag>
       </tags>
   </entry>
   <entry>
@@ -2929,6 +2908,27 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
 <li><a href="https://juejin.im/post/5d0e1e236fb9a07ee16931aa">《iOS事件处理，看我就够了~》</a></li>
 <li><a href="https://juejin.im/post/6844903952773808136">《【iOS面试粮食】UI视图—iOS事件的传递机制》</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>知识复盘</category>
+      </categories>
+      <tags>
+        <tag>2020</tag>
+        <tag>EveryThingFromTheFirstClick(iOS Version)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>当用户第一次点击App（App启动流程）</title>
+    <url>/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当用户第一次点击iPhone手机屏幕上的一个App 图标时，该APP将会被iOS加载启动起来。</p>
+<p>下面将会讲述这加载启动背后的相关知识点，比如：</p>
+<ul>
+<li>App的启动类型</li>
+<li>App冷启动的完整过程</li>
+<li>App的冷启动优化手段</li>
+<li>可执行文件的介绍</li>
+</ul>
+<p><img src="/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/iOS-App-Launch.svg" alt="image"></p>
 ]]></content>
       <categories>
         <category>知识复盘</category>
@@ -3584,10 +3584,10 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
 <p>我目前的一个答案是：使用其他方案代替<code>@propertyWrapper</code>实现代码复用以及和其类似的语法糖效果。</p>
 <p>那么该如何做呢？我的探索答案是：自定义数据类型+字面量协议+“重载强制类型转换操作符”。</p>
 <p>下面让我结合上篇中《<code>@propertyWrapper</code>方案示例》，对我的探索答案一一展开阐述。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// @propertyWrapper方案示例</span><br><span class="line">// ======= 实现的 propertyWrapper TwelveOrLess ========</span><br><span class="line">@propertyWrapper</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct NormalRectangle &#123;</span><br><span class="line">    var height: Int</span><br><span class="line">    var width: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    @TwelveOrLess var height: Int</span><br><span class="line">    @TwelveOrLess var width: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let normalRectangle = NormalRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: normalRectangle.height))&quot;) // Prints &quot;Int&quot;</span><br><span class="line"></span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// @propertyWrapper方案示例</span></span><br><span class="line"><span class="comment">// ======= 实现的 propertyWrapper TwelveOrLess ========</span></span><br><span class="line"><span class="keyword">@propertyWrapper</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TwelveOrLess</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">wrappedValue</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ======= 测试用例 ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">NormalRectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ConstrainedRectangle</span> &#123;</span><br><span class="line">    <span class="meta">@TwelveOrLess</span> <span class="keyword">var</span> height: <span class="type">Int</span></span><br><span class="line">    <span class="meta">@TwelveOrLess</span> <span class="keyword">var</span> width: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">test_TwelveOrLess</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> normalRectangle <span class="operator">=</span> <span class="type">NormalRectangle</span>(height: <span class="number">24</span>, width: <span class="number">24</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;(type(of: normalRectangle.height))&quot;</span>) <span class="comment">// Prints &quot;Int&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> constrainedRectangle <span class="operator">=</span> <span class="type">ConstrainedRectangle</span>(height: <span class="number">24</span>, width: <span class="number">24</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;(type(of: constrainedRectangle.height))&quot;</span>) <span class="comment">// Prints &quot;TwelveOrLess&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="自定义数据类型"><a href="#自定义数据类型" class="headerlink" title="自定义数据类型"></a>自定义数据类型</h2><p>万变不离其宗，实现代码复用的一种方式，就是自定义数据类型，封装相同逻辑。而<code>@propertyWrapper</code>的做法也是让开发者按照约定定义一种数据类型，来实现代码复用。下面，就让我们对照例子，先实现一个自定义的数据类型<code>TwelveOrLess</code>和对应的测试用例吧：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    // 报错：Cannot convert value of type &#x27;Int&#x27; to expected argument type &#x27;TwelveOrLess&#x27;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ======= 实现的自定义数据类型 TwelveOrLess ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TwelveOrLess</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">wrappedValue</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ======= 测试用例 ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ConstrainedRectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">TwelveOrLess</span></span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">TwelveOrLess</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">test_TwelveOrLess</span>() &#123;</span><br><span class="line">    <span class="comment">// 报错：Cannot convert value of type &#x27;Int&#x27; to expected argument type &#x27;TwelveOrLess&#x27;</span></span><br><span class="line">    <span class="keyword">let</span> constrainedRectangle <span class="operator">=</span> <span class="type">ConstrainedRectangle</span>(height: <span class="number">24</span>, width: <span class="number">24</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;(type(of: constrainedRectangle.height))&quot;</span>) <span class="comment">// Prints &quot;TwelveOrLess&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>与上篇《<code>@propertyWrapper</code>方案示例》对比，<code>ConstrainedRectangle</code>中的属性<code>height</code>和<code>width</code>在编译时和运行时都是明确的数据类型：<code>TwelveOrLess</code>——这种显性的、前后一致的表达和表现，能有效帮助让开发者特别是初级开发者避免遇到上篇示例展示的那样疑惑：属性<code>height</code>和<code>width</code>在运行时类型为何产生了突变。</p>
 <p>不过，这时候编译时，我们会遇到报错：<code>Cannot convert value of type &#39;Int&#39; to expected argument type &#39;TwelveOrLess&#39;</code>。</p>
@@ -3596,19 +3596,19 @@ eveloper/Platforms/AppleTVOS.platform/Developer/Library/Xcode/Templates</code></
 <p>字面量协议是Swift 提供给自定义数据类型实现和基础数据类型一样的通过字面量进行实例初始化的能力。此处不作过多展开，有兴趣的童鞋可看我的这篇介绍文章：<a href="https://blog.yorkfish.me/2017/Swift%E7%9A%84%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B%EF%BC%88Literal%20Type%EF%BC%89%E5%92%8C%E5%AD%97%E9%9D%A2%E9%87%8F%E5%8D%8F%E8%AE%AE%EF%BC%88Literal%20Protocol%EF%BC%89/readme/">《Swift的字面量类型（Literal Type）和字面量协议（Literal Protocol）》</a></p>
 </blockquote>
 <p>为了解决上述报错以及对齐《<code>@propertyWrapper</code>方案》的开发体验，只需要让<code>TwelveOrLess</code>实现<code>ExpressibleByIntegerLiteral</code>字面量协议即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现ExpressibleByIntegerLiteral字面量协议</span><br><span class="line">extension TwelveOrLess: ExpressibleByIntegerLiteral &#123;</span><br><span class="line">    typealias IntegerLiteralType = Int</span><br><span class="line"></span><br><span class="line">    public init(integerLiteral value: IntegerLiteralType) &#123;</span><br><span class="line">        self.init(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ======= 实现的自定义数据类型 TwelveOrLess ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TwelveOrLess</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">wrappedValue</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现ExpressibleByIntegerLiteral字面量协议</span></span><br><span class="line"><span class="keyword">extension</span> <span class="title class_">TwelveOrLess</span>: <span class="title class_ inherited__">ExpressibleByIntegerLiteral</span> &#123;</span><br><span class="line">    <span class="keyword">typealias</span> <span class="type">IntegerLiteralType</span> <span class="operator">=</span> <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="params">integerLiteral</span> <span class="params">value</span>: <span class="type">IntegerLiteralType</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ======= 测试用例 ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ConstrainedRectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">TwelveOrLess</span></span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">TwelveOrLess</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">test_TwelveOrLess</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> constrainedRectangle <span class="operator">=</span> <span class="type">ConstrainedRectangle</span>(height: <span class="number">24</span>, width: <span class="number">24</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;(type(of: constrainedRectangle.height))&quot;</span>) <span class="comment">// Prints &quot;TwelveOrLess&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>目前看起来开发体验和《<code>@propertyWrapper</code>方案》差不多了，但是还是有短板，那就是赋值操作时，会报错：<code>Cannot convert value of type &#39;TwelveOrLess&#39; to specified type &#39;Int&#39;</code> 。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    // 报错：Cannot convert value of type &#x27;TwelveOrLess&#x27; to specified type &#x27;Int&#x27;</span><br><span class="line">    var temp_h: Int = constrainedRectangle.height</span><br><span class="line">    print(&quot;temp_h: (temp_h)&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">test_TwelveOrLess</span>() &#123;</span><br><span class="line">    <span class="comment">// 报错：Cannot convert value of type &#x27;TwelveOrLess&#x27; to specified type &#x27;Int&#x27;</span></span><br><span class="line">    <span class="keyword">var</span> temp_h: <span class="type">Int</span> <span class="operator">=</span> constrainedRectangle.height</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;temp_h: (temp_h)&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这时候该怎么解决呢？那就是“重载强制类型转换操作符”，在其赋值给其他类型时可进行强制转换。</p>
 <h2 id="“重载强制类型转换操作符”"><a href="#“重载强制类型转换操作符”" class="headerlink" title="“重载强制类型转换操作符”"></a>“重载强制类型转换操作符”</h2><p>然而，很不幸地，目前Swift不支持重载强制类型转换操作符！！！</p>
 <p>对此，这个探索方案卡在此处。但是，这里将会通过C++展示这个探索方案，帮助读者一窥全貌：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">class TwelveOrLess &#123;  </span><br><span class="line">public:</span><br><span class="line">  int wrappedValue;</span><br><span class="line">  TwelveOrLess() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 重载默认赋值运算符 =（相当于Swift的实现“字面量协议”）</span><br><span class="line">  TwelveOrLess&amp; operator = (const int&amp; right) &#123;</span><br><span class="line">    wrappedValue = std::min(12,right);</span><br><span class="line">    return *this;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  // 重载强制类型转换操作符（type conversion operator）</span><br><span class="line">  operator int() &#123;</span><br><span class="line">    return wrappedValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  // 测试字面量初始化实例</span><br><span class="line">  TwelveOrLess t;</span><br><span class="line">  t = 24;</span><br><span class="line">  std::cout &lt;&lt; &quot;t: &quot; &lt;&lt; t.wrappedValue &lt;&lt; std::endl; // Prints &quot;12&quot;</span><br><span class="line">  // 测试转换为基础类型：重载强制类型转换操作符后，赋值给基础类型时，会进行自动强转。</span><br><span class="line">  int i = 24;</span><br><span class="line">  i = t; //等价于 i = t. operator int()</span><br><span class="line">  std::cout &lt;&lt; &quot;i: &quot; &lt;&lt; i &lt;&lt; std::endl; // Prints &quot;12&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TwelveOrLess</span> &#123;  </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="type">int</span> wrappedValue;</span><br><span class="line">  <span class="built_in">TwelveOrLess</span>() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 重载默认赋值运算符 =（相当于Swift的实现“字面量协议”）</span></span><br><span class="line">  TwelveOrLess&amp; <span class="keyword">operator</span> = (<span class="type">const</span> <span class="type">int</span>&amp; right) &#123;</span><br><span class="line">    wrappedValue = std::<span class="built_in">min</span>(<span class="number">12</span>,right);</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 重载强制类型转换操作符（type conversion operator）</span></span><br><span class="line">  <span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> wrappedValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 测试字面量初始化实例</span></span><br><span class="line">  TwelveOrLess t;</span><br><span class="line">  t = <span class="number">24</span>;</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;t: &quot;</span> &lt;&lt; t.wrappedValue &lt;&lt; std::endl; <span class="comment">// Prints &quot;12&quot;</span></span><br><span class="line">  <span class="comment">// 测试转换为基础类型：重载强制类型转换操作符后，赋值给基础类型时，会进行自动强转。</span></span><br><span class="line">  <span class="type">int</span> i = <span class="number">24</span>;</span><br><span class="line">  i = t; <span class="comment">//等价于 i = t. operator int()</span></span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;i: &quot;</span> &lt;&lt; i &lt;&lt; std::endl; <span class="comment">// Prints &quot;12&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>参照C++的做法，假若Swift支持“重载强制类型转换操作符”，那么，就可以实现<code>TwelveOrLess</code>赋值给Int类型变量的开发体验。然而目前，Swift却不支持。那还有没其他解决方案呢？一种解决方案就是实现一个和赋值运算符（<code>=</code>）相似自定义操作符。</p>
 <h2 id="实现自定义操作符"><a href="#实现自定义操作符" class="headerlink" title="实现自定义操作符"></a>实现自定义操作符</h2><p>Swift目前是支持开发者实现自定义操作符，因此接着上述思路，我们可给<code>TwelveOrLess</code>实现一个和赋值运算符（<code>=</code>）相似自定义操作符<code>&lt;&lt;</code>，然后通过这个操作符完成赋值操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现ExpressibleByIntegerLiteral字面量协议</span><br><span class="line">extension TwelveOrLess: ExpressibleByIntegerLiteral &#123;</span><br><span class="line">    typealias IntegerLiteralType = Int</span><br><span class="line"></span><br><span class="line">    public init(integerLiteral value: IntegerLiteralType) &#123;</span><br><span class="line">        self.init(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现自定义操作符 &lt;&lt;</span><br><span class="line">infix operator &lt;&lt;</span><br><span class="line">extension TwelveOrLess &#123;</span><br><span class="line">    static func &lt;&lt;(left: inout Int, right: TwelveOrLess) &#123;</span><br><span class="line">        left = right.wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">  </span><br><span class="line">    var temp_h: Int = 21</span><br><span class="line">    temp_h &lt;&lt; constrainedRectangle.height</span><br><span class="line">    print(&quot;temp_h: (temp_h)&quot;) // Prints &quot;12&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ======= 实现的自定义数据类型 TwelveOrLess ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TwelveOrLess</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">wrappedValue</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.wrappedValue <span class="operator">=</span> <span class="built_in">min</span>(wrappedValue, <span class="number">12</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现ExpressibleByIntegerLiteral字面量协议</span></span><br><span class="line"><span class="keyword">extension</span> <span class="title class_">TwelveOrLess</span>: <span class="title class_ inherited__">ExpressibleByIntegerLiteral</span> &#123;</span><br><span class="line">    <span class="keyword">typealias</span> <span class="type">IntegerLiteralType</span> <span class="operator">=</span> <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="params">integerLiteral</span> <span class="params">value</span>: <span class="type">IntegerLiteralType</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现自定义操作符 &lt;&lt;</span></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> <span class="title">&lt;&lt;</span></span><br><span class="line"><span class="keyword">extension</span> <span class="title class_">TwelveOrLess</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">func</span> <span class="title function_">&lt;&lt;</span>(<span class="params">left</span>: <span class="keyword">inout</span> <span class="type">Int</span>, <span class="params">right</span>: <span class="type">TwelveOrLess</span>) &#123;</span><br><span class="line">        left <span class="operator">=</span> right.wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ======= 测试用例 ========</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ConstrainedRectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">TwelveOrLess</span></span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">TwelveOrLess</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">test_TwelveOrLess</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> constrainedRectangle <span class="operator">=</span> <span class="type">ConstrainedRectangle</span>(height: <span class="number">24</span>, width: <span class="number">24</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;(type(of: constrainedRectangle.height))&quot;</span>) <span class="comment">// Prints &quot;TwelveOrLess&quot;</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">var</span> temp_h: <span class="type">Int</span> <span class="operator">=</span> <span class="number">21</span></span><br><span class="line">    temp_h <span class="operator">&lt;&lt;</span> constrainedRectangle.height</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;temp_h: (temp_h)&quot;</span>) <span class="comment">// Prints &quot;12&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>至此，在赋值操作方面算是接近了《<code>@propertyWrapper</code>方案》的开发体验。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>目前探索出来的方案在代码复用、字面量初始化方面都是对齐《<code>@propertyWrapper</code>方案》的开发体验，并且保障了开发者的代码感知在编译时和运行时是一致的。但是，由于Swift暂不支持重载强制类型转换操作符这点，导致在赋值操作方面稍差人意。若读者有其他好的想法，欢迎评论交流。</p>
