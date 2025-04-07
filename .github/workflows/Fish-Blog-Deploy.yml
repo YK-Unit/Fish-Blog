@@ -48,7 +48,7 @@ jobs:
         npm install hexo-cli --save
         npm install
         echo "show current content after install"
-        la -a
+        ls -a
 
 
     - name: Download YorkFish-Blog-Source to source/_posts
