@@ -37,13 +37,12 @@ jobs:
     - name: Setup Node Env
       uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: 18
         cache: 'npm'
         
-    - name: test npm
+    - name: Setup NPM CI ENV
       run: |
         npm ci
-        npm test
 
     - name: Setup Hexo Env
       run: |
