@@ -44,9 +44,14 @@ jobs:
 
     - name: Setup Hexo Env
       run: |
+        echo "show current content before install"
+        ls -a 
         npm ci
-        npm install hexo-cli -g
+        npm install hexo-cli --save
         npm install
+        ehco "show current content before install"
+        la -a
+
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
