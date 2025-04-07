@@ -33,6 +33,9 @@ jobs:
       with:
         submodules: recursive # recursively checkout submodules
 
+    - name: Fix permissions
+      run: sudo chmod -R 755 .
+
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
       uses: actions/setup-node@v1
@@ -41,8 +44,8 @@ jobs:
 
     - name: Setup Hexo Env
       run: |
-        npm install hexo-cli -g
-        npm install
+        npm ci
+        npm install hexo-cli --save-dev
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
