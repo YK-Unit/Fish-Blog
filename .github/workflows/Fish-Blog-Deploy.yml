@@ -39,7 +39,7 @@ jobs:
       with:
         node-version: 16
         
-    - name: Setup NPM ENV
+    - name: Setup NPM Env
       run: |
         npm ci
         echo "Configure npm global path now ..."
@@ -54,7 +54,7 @@ jobs:
 
     - name: Verify Versions
       run: |
-        echo "node version:${node -v} , npm version:${npm -v}"
+        echo "node version:$(node -v) , npm version:$(npm -v)"
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
