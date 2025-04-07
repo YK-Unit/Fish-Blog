@@ -29,7 +29,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     # from: https://github.com/actions/checkout  
     - name: Checkout Codes
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive # recursively checkout submodules
 
@@ -38,14 +38,15 @@ jobs:
 
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
-        node-version: "13.x"
+        node-version: "23.x"
 
     - name: Setup Hexo Env
       run: |
         npm ci
-        npm install hexo-cli --save-dev
+        npm install hexo-cli -g
+        npm install
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
@@ -65,7 +66,7 @@ jobs:
     # from: https://github.com/marketplace/actions/hexo-action
     - name: Deploy Blog
       id: deploy
-      uses: sma11black/hexo-action@v1.0.1
+      uses: sma11black/hexo-action@v1.0.3
       with:
         deploy_key: ${{ secrets.FISH_BLOG_DEPLOY_KEY }}
         user_name: "York"  # (or delelte this input setting to use bot account)
