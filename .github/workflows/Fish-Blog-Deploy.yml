@@ -29,31 +29,20 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     # from: https://github.com/actions/checkout  
     - name: Checkout Codes
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
       with:
         submodules: recursive # recursively checkout submodules
 
     # from: https://github.com/actions/setup-node  
     - name: Setup Node Env
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v1
       with:
-        node-version: 16
-        
-    - name: Reset container permissions
-      run: |
-        sudo chown -R runner:docker ~/
-        sudo chmod -R 755 ~/.npm
+        node-version: "13.x"
 
     - name: Setup Hexo Env
       run: |
         npm install hexo-cli -g
         npm install
-
-    - name: Verify Versions
-      run: |
-        echo "Node version: $(node -v)"
-         echo "NPM version: $(npm -v)"
-        echo "Hexo path: $(which hexo || echo 'not found')"
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
@@ -73,9 +62,9 @@ jobs:
     # from: https://github.com/marketplace/actions/hexo-action
     - name: Deploy Blog
       id: deploy
-      uses: sma11black/hexo-action@v1.0.3
+      uses: sma11black/hexo-action@v1.0.1
       with:
-        deploy_key: ${{ secrets.FISH_BLOG_DEPLOY_KEY }}
+        deploy_key: ${{ secrets.Fish_Blog_deploy_key }}
         user_name: "York"  # (or delelte this input setting to use bot account)
         user_email: "yorkzhang520@gmail.com"  # (or delelte this input setting to use bot account)
         commit_msg: ${{ env.SITE_UPDATED_LOG }}  # (or delelte this input setting to use hexo default settings)
