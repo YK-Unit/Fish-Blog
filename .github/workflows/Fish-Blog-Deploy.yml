@@ -44,6 +44,9 @@ jobs:
 
     - name: Setup Hexo Env
       run: |
+        npm cache clean --force
+        rm -rf node_modules
+        rm -rf ~/.npm
         npm ci
         npm install hexo-cli --save-dev
 
