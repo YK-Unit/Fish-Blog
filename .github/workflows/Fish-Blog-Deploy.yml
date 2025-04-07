@@ -62,7 +62,7 @@ jobs:
     # from: https://github.com/marketplace/actions/hexo-action
     - name: Deploy Blog
       id: deploy
-      uses: sma11black/hexo-action@v1.0.1
+      uses: sma11black/hexo-action@v1.0.3
       with:
         deploy_key: ${{ secrets.YORK_BLOG_DEPLOY_ID_ED25519 }}
         user_name: "York"  # (or delelte this input setting to use bot account)
