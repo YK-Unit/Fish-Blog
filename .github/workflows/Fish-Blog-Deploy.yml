@@ -37,17 +37,28 @@ jobs:
     - name: Setup Node Env
       uses: actions/setup-node@v4
       with:
-        node-version: 18
-        cache: 'npm'
+        node-version: 16
         
     - name: Setup NPM CI ENV
       run: |
         npm ci
 
+    - name: Configure npm global path
+      run: |
+        mkdir -p ~/.npm-global
+        npm config set prefix ~/.npm-global
+        echo "PATH=$HOME/.npm-global/bin:$PATH" >> $GITHUB_PATH
+
     - name: Setup Hexo Env
       run: |
         npm install hexo-cli -g
         npm install
+
+    - name: Verify versions
+      run: |
+        node -v
+        npm -v
+        hexo -v
 
     - name: Download YorkFish-Blog-Source to source/_posts
       run: |
