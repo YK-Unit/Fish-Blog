@@ -189,6 +189,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%BA%8C/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/left-v.jpg">
+      <meta itemprop="name" content="YorkFish">
+      <meta itemprop="description" content="Keep IT Simple & Stupid">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YorkFish Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%BA%8C/readme/" class="post-title-link" itemprop="url">Swift5之我对@propertyWrapper的思考二</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-12-24 12:34:56" itemprop="dateCreated datePublished" datetime="2022-12-24T12:34:56+08:00">2022-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>书接上篇<a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/7147182350147797022">《Swift5之我对@propertyWrapper的思考一》</a>尾部所抛出的一个问题：如何解决<code>@propertyWrapper</code>带来的负向影响？</p>
+<p>我目前的一个答案是：使用其他方案代替<code>@propertyWrapper</code>实现代码复用以及和其类似的语法糖效果。</p>
+<p>那么该如何做呢？我的探索答案是：自定义数据类型+字面量协议+“重载强制类型转换操作符”。</p>
+<p>下面让我结合上篇中《<code>@propertyWrapper</code>方案示例》，对我的探索答案一一展开阐述。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// @propertyWrapper方案示例</span><br><span class="line">// ======= 实现的 propertyWrapper TwelveOrLess ========</span><br><span class="line">@propertyWrapper</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct NormalRectangle &#123;</span><br><span class="line">    var height: Int</span><br><span class="line">    var width: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    @TwelveOrLess var height: Int</span><br><span class="line">    @TwelveOrLess var width: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let normalRectangle = NormalRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: normalRectangle.height))&quot;) // Prints &quot;Int&quot;</span><br><span class="line"></span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义数据类型"><a href="#自定义数据类型" class="headerlink" title="自定义数据类型"></a>自定义数据类型</h2><p>万变不离其宗，实现代码复用的一种方式，就是自定义数据类型，封装相同逻辑。而<code>@propertyWrapper</code>的做法也是让开发者按照约定定义一种数据类型，来实现代码复用。下面，就让我们对照例子，先实现一个自定义的数据类型<code>TwelveOrLess</code>和对应的测试用例吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    // 报错：Cannot convert value of type &#x27;Int&#x27; to expected argument type &#x27;TwelveOrLess&#x27;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与上篇《<code>@propertyWrapper</code>方案示例》对比，<code>ConstrainedRectangle</code>中的属性<code>height</code>和<code>width</code>在编译时和运行时都是明确的数据类型：<code>TwelveOrLess</code>——这种显性的、前后一致的表达和表现，能有效帮助让开发者特别是初级开发者避免遇到上篇示例展示的那样疑惑：属性<code>height</code>和<code>width</code>在运行时类型为何产生了突变。</p>
+<p>不过，这时候编译时，我们会遇到报错：<code>Cannot convert value of type &#39;Int&#39; to expected argument type &#39;TwelveOrLess&#39;</code>。</p>
+<p>因为在编译时，属性<code>height</code>和<code>width</code>是<code>TwelveOrLess</code>类型，因此无法接受<code>Int</code>类型的字面量值进行实例初始化。而在上篇《<code>@propertyWrapper</code>方案示例》中，可以使用<code>Int</code>类型的字面量值进行实例初始化，为了对齐《<code>@propertyWrapper</code>方案》的开发体验，我们应该怎么做呢？那就是使用字面量协议。</p>
+<h2 id="字面量协议"><a href="#字面量协议" class="headerlink" title="字面量协议"></a>字面量协议</h2><blockquote>
+<p>字面量协议是Swift 提供给自定义数据类型实现和基础数据类型一样的通过字面量进行实例初始化的能力。此处不作过多展开，有兴趣的童鞋可看我的这篇介绍文章：<a href="https://blog.yorkfish.me/2017/Swift%E7%9A%84%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B%EF%BC%88Literal%20Type%EF%BC%89%E5%92%8C%E5%AD%97%E9%9D%A2%E9%87%8F%E5%8D%8F%E8%AE%AE%EF%BC%88Literal%20Protocol%EF%BC%89/readme/">《Swift的字面量类型（Literal Type）和字面量协议（Literal Protocol）》</a></p>
+</blockquote>
+<p>为了解决上述报错以及对齐《<code>@propertyWrapper</code>方案》的开发体验，只需要让<code>TwelveOrLess</code>实现<code>ExpressibleByIntegerLiteral</code>字面量协议即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现ExpressibleByIntegerLiteral字面量协议</span><br><span class="line">extension TwelveOrLess: ExpressibleByIntegerLiteral &#123;</span><br><span class="line">    typealias IntegerLiteralType = Int</span><br><span class="line"></span><br><span class="line">    public init(integerLiteral value: IntegerLiteralType) &#123;</span><br><span class="line">        self.init(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>目前看起来开发体验和《<code>@propertyWrapper</code>方案》差不多了，但是还是有短板，那就是赋值操作时，会报错：<code>Cannot convert value of type &#39;TwelveOrLess&#39; to specified type &#39;Int&#39;</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    // 报错：Cannot convert value of type &#x27;TwelveOrLess&#x27; to specified type &#x27;Int&#x27;</span><br><span class="line">    var temp_h: Int = constrainedRectangle.height</span><br><span class="line">    print(&quot;temp_h: (temp_h)&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候该怎么解决呢？那就是“重载强制类型转换操作符”，在其赋值给其他类型时可进行强制转换。</p>
+<h2 id="“重载强制类型转换操作符”"><a href="#“重载强制类型转换操作符”" class="headerlink" title="“重载强制类型转换操作符”"></a>“重载强制类型转换操作符”</h2><p>然而，很不幸地，目前Swift不支持重载强制类型转换操作符！！！</p>
+<p>对此，这个探索方案卡在此处。但是，这里将会通过C++展示这个探索方案，帮助读者一窥全貌：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">class TwelveOrLess &#123;  </span><br><span class="line">public:</span><br><span class="line">  int wrappedValue;</span><br><span class="line">  TwelveOrLess() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 重载默认赋值运算符 =（相当于Swift的实现“字面量协议”）</span><br><span class="line">  TwelveOrLess&amp; operator = (const int&amp; right) &#123;</span><br><span class="line">    wrappedValue = std::min(12,right);</span><br><span class="line">    return *this;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  // 重载强制类型转换操作符（type conversion operator）</span><br><span class="line">  operator int() &#123;</span><br><span class="line">    return wrappedValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  // 测试字面量初始化实例</span><br><span class="line">  TwelveOrLess t;</span><br><span class="line">  t = 24;</span><br><span class="line">  std::cout &lt;&lt; &quot;t: &quot; &lt;&lt; t.wrappedValue &lt;&lt; std::endl; // Prints &quot;12&quot;</span><br><span class="line">  // 测试转换为基础类型：重载强制类型转换操作符后，赋值给基础类型时，会进行自动强转。</span><br><span class="line">  int i = 24;</span><br><span class="line">  i = t; //等价于 i = t. operator int()</span><br><span class="line">  std::cout &lt;&lt; &quot;i: &quot; &lt;&lt; i &lt;&lt; std::endl; // Prints &quot;12&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参照C++的做法，假若Swift支持“重载强制类型转换操作符”，那么，就可以实现<code>TwelveOrLess</code>赋值给Int类型变量的开发体验。然而目前，Swift却不支持。那还有没其他解决方案呢？一种解决方案就是实现一个和赋值运算符（<code>=</code>）相似自定义操作符。</p>
+<h2 id="实现自定义操作符"><a href="#实现自定义操作符" class="headerlink" title="实现自定义操作符"></a>实现自定义操作符</h2><p>Swift目前是支持开发者实现自定义操作符，因此接着上述思路，我们可给<code>TwelveOrLess</code>实现一个和赋值运算符（<code>=</code>）相似自定义操作符<code>&lt;&lt;</code>，然后通过这个操作符完成赋值操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// ======= 实现的自定义数据类型 TwelveOrLess ========</span><br><span class="line">struct TwelveOrLess &#123;</span><br><span class="line">    var wrappedValue: Int &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            wrappedValue = min(wrappedValue, 12)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    init(wrappedValue: Int) &#123;</span><br><span class="line">        self.wrappedValue = min(wrappedValue, 12)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现ExpressibleByIntegerLiteral字面量协议</span><br><span class="line">extension TwelveOrLess: ExpressibleByIntegerLiteral &#123;</span><br><span class="line">    typealias IntegerLiteralType = Int</span><br><span class="line"></span><br><span class="line">    public init(integerLiteral value: IntegerLiteralType) &#123;</span><br><span class="line">        self.init(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实现自定义操作符 &lt;&lt;</span><br><span class="line">infix operator &lt;&lt;</span><br><span class="line">extension TwelveOrLess &#123;</span><br><span class="line">    static func &lt;&lt;(left: inout Int, right: TwelveOrLess) &#123;</span><br><span class="line">        left = right.wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ======= 测试用例 ========</span><br><span class="line">struct ConstrainedRectangle &#123;</span><br><span class="line">    var height: TwelveOrLess</span><br><span class="line">    var width: TwelveOrLess</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test_TwelveOrLess() &#123;</span><br><span class="line">    let constrainedRectangle = ConstrainedRectangle(height: 24, width: 24)</span><br><span class="line">    print(&quot;(type(of: constrainedRectangle.height))&quot;) // Prints &quot;TwelveOrLess&quot;</span><br><span class="line">  </span><br><span class="line">    var temp_h: Int = 21</span><br><span class="line">    temp_h &lt;&lt; constrainedRectangle.height</span><br><span class="line">    print(&quot;temp_h: (temp_h)&quot;) // Prints &quot;12&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，在赋值操作方面算是接近了《<code>@propertyWrapper</code>方案》的开发体验。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>目前探索出来的方案在代码复用、字面量初始化方面都是对齐《<code>@propertyWrapper</code>方案》的开发体验，并且保障了开发者的代码感知在编译时和运行时是一致的。但是，由于Swift暂不支持重载强制类型转换操作符这点，导致在赋值操作方面稍差人意。若读者有其他好的想法，欢迎评论交流。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%80/readme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +325,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,7 +421,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -405,7 +510,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -508,7 +613,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -622,7 +727,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -824,7 +929,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1057,7 +1162,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1139,7 +1244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1220,7 +1325,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1273,92 +1378,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2020/Future%E5%92%8CPromise%E7%9A%84%E5%8C%BA%E5%88%AB/readme/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/left-v.jpg">
-      <meta itemprop="name" content="YorkFish">
-      <meta itemprop="description" content="Keep IT Simple & Stupid">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YorkFish Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Future%E5%92%8CPromise%E7%9A%84%E5%8C%BA%E5%88%AB/readme/" class="post-title-link" itemprop="url">Future和Promise的区别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-31 10:10:01" itemprop="dateCreated datePublished" datetime="2020-05-31T10:10:01+08:00">2020-05-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Future模型和Promise模型是并发编程领域中的两种相近的异步编程模型，Future和Promise则是并发编程语言分别对Future模型和Promise模型进行实现后的产物。</p>
-<p>Future和Promise之间，既有相同之处，也有不同之处。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/Future%E5%92%8CPromise%E7%9A%84%E5%8C%BA%E5%88%AB/readme/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1426,7 +1449,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

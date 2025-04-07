@@ -189,6 +189,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2017/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/left-v.jpg">
+      <meta itemprop="name" content="YorkFish">
+      <meta itemprop="description" content="Keep IT Simple & Stupid">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YorkFish Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/readme/" class="post-title-link" itemprop="url">配置多个SSH-Key</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-16 12:34:56" itemprop="dateCreated datePublished" datetime="2017-04-16T12:34:56+08:00">2017-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>为了安全性，个人的github和公司的gitlab需要配置不同的SSH-Key。具体如下：</p>
+<ol>
+<li><p>切换到系统的SSH目录</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为个人的github生成SSH-Key（若还没有）</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_mail@example.com&quot; -f github_rsa</span><br></pre></td></tr></table></figure>
+
+<p> 然后，前往github添加SSH公钥。</p>
+</li>
+<li><p>为公司的gitlab生成SSH-Key（若还没有）</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_mail@company.com&quot; -f company_rsa</span><br></pre></td></tr></table></figure>
+
+<p> 然后，前往gitlab添加SSH公钥。</p>
+</li>
+<li><p>添加配置文件（若还没有）</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为配置文件<code>config</code>添加如下内容</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github_rsa</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gitlab.company.com</span></span><br><span class="line">Host gitlab.company.com</span><br><span class="line">HostName gitlab.company.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/company_rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p> 输出：</p>
+<blockquote>
+<p>Hi YK-Unit! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<p> 以上表示成功连接到了个人的github。<br> 然后可以用同样方式测试公司的gitlab。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2017/%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E6%8C%87%E5%90%91%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F/readme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +323,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -306,7 +409,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -397,7 +500,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -478,7 +581,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -563,7 +666,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -644,7 +747,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -725,7 +828,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -806,7 +909,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -916,7 +1019,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-07 20:57:17" itemprop="dateModified" datetime="2025-04-07T20:57:17+08:00">2025-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -982,107 +1085,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2014/Objective-C%EF%BC%9AClass%20Method%20vs%20Static%20Method/readme/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/left-v.jpg">
-      <meta itemprop="name" content="YorkFish">
-      <meta itemprop="description" content="Keep IT Simple & Stupid">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YorkFish Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/Objective-C%EF%BC%9AClass%20Method%20vs%20Static%20Method/readme/" class="post-title-link" itemprop="url">Objective-C: class method VS static method</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2014-03-24 14:52:32" itemprop="dateCreated datePublished" datetime="2014-03-24T14:52:32+08:00">2014-03-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 20:50:13" itemprop="dateModified" datetime="2025-04-07T20:50:13+08:00">2025-04-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在比较之前，你应该了解以下知识：</p>
-<ol>
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/likendsl/article/details/7566031">Objcetive-C的函数调用机制</a></li>
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.devtang.com/blog/2013/10/15/objective-c-object-model/">Objective-C的对象模型</a></li>
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.leezhong.com/ios/2013/08/03/dynamic-tips-and-tricks-with-objective-c.html">Objective-C的动态特性</a></li>
-</ol>
-<hr>
-<p>在阅读完毕，了解知道Objective-C 中的 <em>Message、Object、Class、MetaClass、Method（SEL-IMP)</em> 的重要概念后，现在开始比较！</p>
-<p>下面是来自 WIKI 的对 static method 的<a target="_blank" rel="noopener external nofollow noreferrer" href="http://en.wikipedia.org/wiki/Method_(computer_programming)#Static_methods">定义</a>：</p>
-<blockquote>
-<p>Static methods neither require an instance of the class nor can they implicitly access the data (or this, self, Me, etc.) of such an instance. A static method is distinguished in some programming languages with the static keyword placed somewhere in the method’s signature.</p>
-</blockquote>
-<blockquote>
-<p>In statically typed languages such as Java, static methods are called “static” because they are resolved statically (i.e. at compile time) based on the class they are called on and not dynamically as in the case with instance methods which are resolved polymorphically based on the runtime type of the object. Therefore, static methods cannot be overridden.</p>
-</blockquote>
-<p>从定义可以看出，Objective-C 的 class method 根本不是 static method，而实际上，<strong>Objective-C 也不存在 static method！</strong>（尽管 class method 因为用法而看似 static method，但它们是有本质的差别的。）</p>
-<p>那么它们的区别是？（出于好奇心，我们假设下 Objective-C 中有 static method → →）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2014/Objective-C%EF%BC%9AClass%20Method%20vs%20Static%20Method/readme/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1150,7 +1156,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
