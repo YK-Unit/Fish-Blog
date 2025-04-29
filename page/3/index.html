@@ -189,6 +189,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2019/git%20submodule%E7%89%88%E6%9C%AC%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7%EF%BC%9Agit_submodule_version_checker/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/left-v.jpg">
+      <meta itemprop="name" content="YorkFish">
+      <meta itemprop="description" content="Keep IT Simple & Stupid">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YorkFish Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/git%20submodule%E7%89%88%E6%9C%AC%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7%EF%BC%9Agit_submodule_version_checker/readme/" class="post-title-link" itemprop="url">git submodule版本检测工具：git_submodule_version_checker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-09-23 12:34:56" itemprop="dateCreated datePublished" datetime="2019-09-23T12:34:56+08:00">2019-09-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近项目由于一些特殊需要，使用了git的submodules工具来引入一个子项目到主项目中。然而考虑submodules工具在团队协作开发的过程中，容易出现子项目版本不一致的问题，于是研发了<a target="_blank" rel="noopener" href="https://github.com/YK-Unit/git_submodule_version_checker">git_submodule_version_checker</a>这款工具来解决。</p>
+<blockquote>
+<p>1、关于git的submodules工具的介绍可以点击阅读<a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">《Git 工具 - 子模块》</a>。</p>
+<p>2、关于git的submodules工具的优缺点，有兴趣的请直接Google吧，目前网上已经很多资料了。总得来说，其最大的（可能也是唯一的）优点是：允许开发者将一个子项目的git仓库作为主项目git 仓库的子目录，并让子项目保持提交的独立；而其突出的缺点主要有以下几个：</p>
+<ul>
+<li><p>主项目仓库不记录子项目仓库的文件变动，只记录子项目仓库的commitId，在这个背景下，团队协作开发过程中容易产生子项目版本不一致的问题，具体表现如下：</p>
+<ul>
+<li>团队协作开发时，若有成员更新了子项目，但是你<code>git pull</code>后，却没有运行<code>git submodule update --remote</code>更新子项目本地仓库，那么你极有可能再次把旧的子项目版本信息（子项目仓库依然指向一个旧的commitId）提交至主项目</li>
+<li>团队协作开发时，若你在本地改动了子项目，并在主项目中提交并推送了子项目版本信息，但却没有推送子项目仓库上的改动，这时其他成员在拉取更新后，运行<code>git submodule update</code>时，会遇到“找不到所引用的子模块提交”的错误提示<ul>
+<li>每次更新子项目仓库，子项目仓库都会回到游离状态，在这个背景下， 会产生的问题有：</li>
+</ul>
+</li>
+<li>若你已经切换到指定分支，在更新后，需要手动切换分支；</li>
+<li>若你对子项目做了修改，但是忘记了提交，这时候执行更新，会导致修改被丢失；</li>
+</ul>
+</li>
+<li><p>子项目仓库总是需要手动更新（不过可以通过自动化工具编写帮助解决此问题）</p>
+</li>
+</ul>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/git%20submodule%E7%89%88%E6%9C%AC%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7%EF%BC%9Agit_submodule_version_checker/readme/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2019/XDR-External%20Data%20Representation/readme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -307,7 +407,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -388,7 +488,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -470,7 +570,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -554,7 +654,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -636,7 +736,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -717,7 +817,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -798,7 +898,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:12" itemprop="dateModified" datetime="2025-04-07T21:06:12+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -879,7 +979,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
+                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -906,94 +1006,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/Unicode%E5%92%8CUTF-8%E3%80%81UTF-16/readme/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2017/%E3%80%8E%20merge%20--ff%E3%80%8F%20VS%20%E3%80%8E%20merge%20--no-ff%20%E3%80%8F%20VS%E3%80%8E%20rebase%20%E3%80%8F/readme/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/left-v.jpg">
-      <meta itemprop="name" content="YorkFish">
-      <meta itemprop="description" content="Keep IT Simple & Stupid">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YorkFish Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/%E3%80%8E%20merge%20--ff%E3%80%8F%20VS%20%E3%80%8E%20merge%20--no-ff%20%E3%80%8F%20VS%E3%80%8E%20rebase%20%E3%80%8F/readme/" class="post-title-link" itemprop="url">『 merge --ff』 VS 『 merge --no-ff 』 VS『 rebase 』</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-05-20 12:34:56" itemprop="dateCreated datePublished" datetime="2017-05-20T12:34:56+08:00">2017-05-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-07 21:06:13" itemprop="dateModified" datetime="2025-04-07T21:06:13+08:00">2025-04-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在合并分支时（如合并develop分支到master分支），我们可以有以下命令的选择：</p>
-<ul>
-<li><code>git merge // 等同于 git merge --ff</code></li>
-<li><code>git merge --no-ff</code></li>
-<li><code>git rebase</code></li>
-</ul>
-<p>那么，这三者之间有哪些区别呢？对此，我将会通过下面的实验进行比较说明：</p>
-<p><img src="/2017/%E3%80%8E%20merge%20--ff%E3%80%8F%20VS%20%E3%80%8E%20merge%20--no-ff%20%E3%80%8F%20VS%E3%80%8E%20rebase%20%E3%80%8F/readme/%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E5%AE%9E%E9%AA%8C%E8%AF%B4%E6%98%8E%E5%9B%BE.png" alt="分支合并实验说明图.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/%E3%80%8E%20merge%20--ff%E3%80%8F%20VS%20%E3%80%8E%20merge%20--no-ff%20%E3%80%8F%20VS%E3%80%8E%20rebase%20%E3%80%8F/readme/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1084,7 +1096,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1097,7 +1109,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
