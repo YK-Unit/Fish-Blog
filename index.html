@@ -189,6 +189,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2025/%E5%85%B3%E4%BA%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B2%89%E6%B7%80%E6%80%A7%E6%80%9D%E8%80%83/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/left-v.jpg">
+      <meta itemprop="name" content="YorkFish">
+      <meta itemprop="description" content="Keep IT Simple & Stupid">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YorkFish Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/%E5%85%B3%E4%BA%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B2%89%E6%B7%80%E6%80%A7%E6%80%9D%E8%80%83/readme/" class="post-title-link" itemprop="url">关于架构设计的一些沉淀性思考</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-05-25 12:34:56" itemprop="dateCreated datePublished" datetime="2025-05-25T12:34:56+08:00">2025-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近来在找新工作，对上一阶段的项目、技术进行总结时，在架构设计方面有一些总结性沉淀性的简要思考，在此分享一下。</p>
+<h2 id="架构设计怎么做"><a href="#架构设计怎么做" class="headerlink" title="架构设计怎么做"></a>架构设计怎么做</h2><p>架构设计怎么做？</p>
+<ul>
+<li>首先需要明确架构设计的目标是什么。</li>
+<li><strong>架构设计的目标</strong>在于：提升代码的并行开发效能，提升代码的可维护性、可测试性和可扩展性。</li>
+<li><strong>要实现这些目标，我认为我们需要从整体（面）到局部（点）做思考和设计</strong>。</li>
+<li><strong>从整体上</strong>，我们需要整理出尽量清晰的业务边界和做好业务发展的预判，<strong>遵循SOLID原则做好分层分模块的设计</strong>。</li>
+<li><strong>那如何划分层数和模块？需要明确边界和粒度大小。如何明确？我的经验心得是：匹配组织架构。组织、人、代码，三维一体，人归属组织，代码由人编写，代码最后会反应的是组织的结构</strong>，所以如果不匹配，就会导致交叉依赖的问题，或者并行开发效能低下的问题。比如业务发展壮大了，负责某个功能模块的团队一分为二，这时候架构设计方面若不做调整，必然会出现代码交叉依赖的问题。</li>
+<li><strong>在完成了整体架构的设计后，则需要从局部入手对具体业务模块或者功能模块进行设计</strong>。这时候可使用合适的架构模式（如MVC、MVP、MVVM等）和合适的设计模型（如单例模式、工厂模式、命令模式、中介模式等）去实现具体的目标和解决具体的问题。</li>
+<li>需要注意的是：<strong>设计模式的本质是解题范式</strong>，用于指导解决具体类型场景的问题，在使用时应当按照实际情况因地制宜，切不可生硬地照搬照套、“依葫芦画瓢”。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2025/FlutterEngine%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E4%B9%8B2025%E5%B9%B4%E7%89%88%E6%95%99%E7%A8%8B/readme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -212,10 +296,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-04-29 12:34:56 / Modified: 10:31:10" itemprop="dateCreated datePublished" datetime="2025-04-29T12:34:56+08:00">2025-04-29</time>
+              <time title="Created: 2025-04-29 12:34:56" itemprop="dateCreated datePublished" datetime="2025-04-29T12:34:56+08:00">2025-04-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -332,7 +422,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -437,7 +527,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -533,7 +623,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -622,7 +712,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -725,7 +815,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -839,7 +929,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1041,7 +1131,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1274,7 +1364,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
+                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1307,87 +1397,6 @@
 </ul>
 <p><img src="/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/iOS-App-Launch.svg" alt="image"></p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2020/FP%E6%8E%A2%E7%B4%A2/readme/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/left-v.jpg">
-      <meta itemprop="name" content="YorkFish">
-      <meta itemprop="description" content="Keep IT Simple & Stupid">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YorkFish Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/FP%E6%8E%A2%E7%B4%A2/readme/" class="post-title-link" itemprop="url">FP探索</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-01 12:34:56" itemprop="dateCreated datePublished" datetime="2020-07-01T12:34:56+08:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-29 10:31:10" itemprop="dateModified" datetime="2025-04-29T10:31:10+08:00">2025-04-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要是对计算机科学领域中的函数式编程（英语：Functional Programming）范式的理论、特性及特性的实现方案进行探索。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/FP%E6%8E%A2%E7%B4%A2/readme/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
@@ -1473,7 +1482,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1486,7 +1495,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
