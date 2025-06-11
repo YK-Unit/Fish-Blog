@@ -6,7 +6,7 @@
   <link href="https://blog.yorkfish.me/atom.xml" rel="self"/>
   
   <link href="https://blog.yorkfish.me/"/>
-  <updated>2025-06-11T11:44:39.772Z</updated>
+  <updated>2025-06-11T13:10:51.227Z</updated>
   <id>https://blog.yorkfish.me/</id>
   
   <author>
@@ -21,16 +21,11 @@
     <link href="https://blog.yorkfish.me/2025/Swift%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%85%B3%E8%81%94%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%AB%98%E5%86%85%E8%81%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/"/>
     <id>https://blog.yorkfish.me/2025/Swift%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%85%B3%E8%81%94%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%AB%98%E5%86%85%E8%81%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/</id>
     <published>2025-06-11T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.772Z</updated>
+    <updated>2025-06-11T13:10:51.227Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今年在找工作，回顾之前在网易做的赢彩票项目时，发现到现在业内在网上也没有出现像我那样基于 &lt;code&gt;Swift 关联协议&lt;/code&gt; 去实现的一个高内聚的数据类型系统的 Case，所以在此分享一下我在该项目基于 &lt;code&gt;Swift 关联协议&lt;/code&gt;</summary>
-        
-      
+    <summary type="html">&lt;p&gt;今年在找工作，回顾之前在网易做的赢彩票项目时，发现到现在业内在网上也没有出现像我那样基于 &lt;code&gt;Swift 关联协议&lt;/code&gt; 去实现的一个高内聚的数据类型系统的 Case，所以在此分享一下我在该项目基于 &lt;code&gt;Swift 关联协议&lt;/code&gt; 的高内聚的数据类型系统：彩票数据类型系统。&lt;/p&gt;
+&lt;p&gt;这里先简单介绍一下业务背景吧：该项目需要接入大量的彩票，然后我如下图基于生物分类法对彩票进行了分类，然后以&lt;code&gt;彩票属&lt;/code&gt;为业务单元构建&lt;code&gt;命名空间（NameSpace）&lt;/code&gt;，&lt;code&gt;命名空间（NameSpace）&lt;/code&gt;内部收敛存放该&lt;code&gt;彩票属&lt;/code&gt;下的&lt;code&gt;彩票种&lt;/code&gt;的具体类型、玩法类型、以及通用的业务逻辑模块（此处的「通用」是指同一个&lt;code&gt;彩票属&lt;/code&gt;的&lt;code&gt;彩票种&lt;/code&gt;的业务逻辑是一样的，如解析逻辑、选号逻辑、计费逻辑等）。&lt;/p&gt;</summary>
     
     
     
@@ -50,7 +45,7 @@
     <link href="https://blog.yorkfish.me/2025/%E5%85%B3%E4%BA%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B2%89%E6%B7%80%E6%80%A7%E6%80%9D%E8%80%83/readme/"/>
     <id>https://blog.yorkfish.me/2025/%E5%85%B3%E4%BA%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B2%89%E6%B7%80%E6%80%A7%E6%80%9D%E8%80%83/readme/</id>
     <published>2025-05-25T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.773Z</updated>
+    <updated>2025-06-11T13:10:51.228Z</updated>
     
     
       
@@ -80,13 +75,9 @@
     <link href="https://blog.yorkfish.me/2025/FlutterEngine%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E4%B9%8B2025%E5%B9%B4%E7%89%88%E6%95%99%E7%A8%8B/readme/"/>
     <id>https://blog.yorkfish.me/2025/FlutterEngine%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E4%B9%8B2025%E5%B9%B4%E7%89%88%E6%95%99%E7%A8%8B/readme/</id>
     <published>2025-04-29T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.770Z</updated>
+    <updated>2025-06-11T13:10:51.225Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;我的设备：&lt;/p&gt;
 &lt;ul&gt;
@@ -94,9 +85,29 @@
 &lt;li&gt;macOS 15.3.2&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;1-macOS-端搭建源码编译环境&quot;&gt;&lt;a</summary>
-        
-      
+&lt;h2 id=&quot;1-macOS-端搭建源码编译环境&quot;&gt;&lt;a href=&quot;#1-macOS-端搭建源码编译环境&quot; class=&quot;headerlink&quot; title=&quot;1. macOS 端搭建源码编译环境&quot;&gt;&lt;/a&gt;1. macOS 端搭建源码编译环境&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;按照&lt;a href=&quot;https://chromium.googlesource.com/chromium/tools/depot_tools.git&quot;&gt;官方教程&lt;/a&gt;安装 depot_tools&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://chromium.googlesource.com/chromium/tools/depot_tools.git&quot;&gt;depot_tools&lt;/a&gt; 是 Chromium 源码依赖管理工具集，内含 gclient 等工具；用于帮助 Chromium、Flutter Engine等项目同步代码和管理编译所需的依赖&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;brew 安装 ant 和 ninja&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install ant brew install ninja&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;2-下载-Flutter-Engine-源码和安装所需依赖&quot;&gt;&lt;a href=&quot;#2-下载-Flutter-Engine-源码和安装所需依赖&quot; class=&quot;headerlink&quot; title=&quot;2. 下载 Flutter Engine 源码和安装所需依赖&quot;&gt;&lt;/a&gt;2. 下载 Flutter Engine 源码和安装所需依赖&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;下载 Flutter Engine 源码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; git@github.com:flutter/flutter.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;进入源码根目录，然后复制  engine/scripts 任意一个 &lt;code&gt;xx.gclient&lt;/code&gt; 文件到 根目录中，并修改名称为 &lt;code&gt;.gclient&lt;/code&gt;。我用的是&lt;code&gt;standard.gclient&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/2025/FlutterEngine%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E4%B9%8B2025%E5%B9%B4%E7%89%88%E6%95%99%E7%A8%8B/readme/gclient.png&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;在源码根目录执行&lt;code&gt;gclient sync&lt;/code&gt;同步代码和安装所需的依赖&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
@@ -116,7 +127,7 @@
     <link href="https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%BA%8C/readme/"/>
     <id>https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%BA%8C/readme/</id>
     <published>2022-12-24T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.770Z</updated>
+    <updated>2025-06-11T13:10:51.225Z</updated>
     
     
       
@@ -145,7 +156,7 @@
     <link href="https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%80/readme/"/>
     <id>https://blog.yorkfish.me/2022/Swift5%E4%B9%8B%E6%88%91%E5%AF%B9@propertyWrapper%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%80/readme/</id>
     <published>2022-09-25T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.770Z</updated>
+    <updated>2025-06-11T13:10:51.225Z</updated>
     
     
       
@@ -174,7 +185,7 @@
     <link href="https://blog.yorkfish.me/2021/%E6%89%8BY%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%BA%8C%EF%BC%9A%E6%89%8BY%E4%B8%9A%E5%8A%A1%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%BE/readme/"/>
     <id>https://blog.yorkfish.me/2021/%E6%89%8BY%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%BA%8C%EF%BC%9A%E6%89%8BY%E4%B8%9A%E5%8A%A1%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%BE/readme/</id>
     <published>2021-12-13T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.769Z</updated>
+    <updated>2025-06-11T13:10:51.224Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这篇文章既是对上篇&lt;a href=&quot;https://juejin.cn/post/6980910026151952391&quot;&gt;《手Y开发规范化建设一：Commit Message 规范建设》&lt;/a&gt;在文章结尾抛出的问题的解答，也是对外分享已经在手Y业务团队落地实施5个月（自2021年8月初开始）了的《手Y业务工程规范》的建设经验。&lt;/p&gt;
@@ -207,7 +218,7 @@
     <link href="https://blog.yorkfish.me/2021/%E6%89%8BY%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%B8%80%EF%BC%9ACommit%20Message%20%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%BE/readme/"/>
     <id>https://blog.yorkfish.me/2021/%E6%89%8BY%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%B8%80%EF%BC%9ACommit%20Message%20%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%BE/readme/</id>
     <published>2021-07-04T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.768Z</updated>
+    <updated>2025-06-11T13:10:51.223Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我于2020年年中加入了手机YY iOS团队，那时发现团队成员在特性阶段所写的&lt;code&gt;Commit Message&lt;/code&gt;比较随意；在集成阶段，则比较统一：&lt;/p&gt;
@@ -254,7 +265,7 @@
     <link href="https://blog.yorkfish.me/2021/%E6%89%8BY%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E4%B9%8BPodfile.lock%E7%AE%A1%E7%90%86%E6%96%B0%E6%96%B9%E6%A1%88/readme/"/>
     <id>https://blog.yorkfish.me/2021/%E6%89%8BY%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E4%B9%8BPodfile.lock%E7%AE%A1%E7%90%86%E6%96%B0%E6%96%B9%E6%A1%88/readme/</id>
     <published>2021-03-07T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.768Z</updated>
+    <updated>2025-06-11T13:10:51.223Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在iOS工程接入&lt;code&gt;CocoaPods&lt;/code&gt;做依赖管理后，开发者对&lt;code&gt;Podfile.lock&lt;/code&gt;的管理主要有以下两种方案：&lt;/p&gt;
@@ -312,7 +323,7 @@
     <link href="https://blog.yorkfish.me/2020/%E5%BD%93%E7%AC%AC%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%B8%B2%E6%9F%93%E6%97%B6%EF%BC%88%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86+%E5%9B%BE%E7%89%87%E8%A7%A3%E7%A0%81%EF%BC%89/readme/"/>
     <id>https://blog.yorkfish.me/2020/%E5%BD%93%E7%AC%AC%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%B8%B2%E6%9F%93%E6%97%B6%EF%BC%88%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86+%E5%9B%BE%E7%89%87%E8%A7%A3%E7%A0%81%EF%BC%89/readme/</id>
     <published>2020-08-05T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.767Z</updated>
+    <updated>2025-06-11T13:10:51.221Z</updated>
     
     
       
@@ -339,7 +350,7 @@
     <link href="https://blog.yorkfish.me/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBUIView%EF%BC%88%E5%85%B3%E4%BA%8EiOS%E7%A1%AC%E4%BB%B6%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%89/readme/"/>
     <id>https://blog.yorkfish.me/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBUIView%EF%BC%88%E5%85%B3%E4%BA%8EiOS%E7%A1%AC%E4%BB%B6%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%89/readme/</id>
     <published>2020-07-29T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.763Z</updated>
+    <updated>2025-06-11T13:10:51.217Z</updated>
     
     
       
@@ -366,7 +377,7 @@
     <link href="https://blog.yorkfish.me/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/"/>
     <id>https://blog.yorkfish.me/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/</id>
     <published>2020-07-27T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.744Z</updated>
+    <updated>2025-06-11T13:10:51.199Z</updated>
     
     
       
@@ -393,7 +404,7 @@
     <link href="https://blog.yorkfish.me/2020/FP%E6%8E%A2%E7%B4%A2/readme/"/>
     <id>https://blog.yorkfish.me/2020/FP%E6%8E%A2%E7%B4%A2/readme/</id>
     <published>2020-07-01T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.706Z</updated>
+    <updated>2025-06-11T13:10:51.160Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文主要是对计算机科学领域中的函数式编程（英语：Functional Programming）范式的理论、特性及特性的实现方案进行探索。&lt;/p&gt;</summary>
@@ -418,7 +429,7 @@
     <link href="https://blog.yorkfish.me/2020/Flr%E7%9A%84%E4%BA%A7%E5%93%81%E8%A7%82%E5%92%8C%E5%BC%80%E5%8F%91%E8%A7%82/readme/"/>
     <id>https://blog.yorkfish.me/2020/Flr%E7%9A%84%E4%BA%A7%E5%93%81%E8%A7%82%E5%92%8C%E5%BC%80%E5%8F%91%E8%A7%82/readme/</id>
     <published>2020-06-04T04:34:56.000Z</published>
-    <updated>2025-06-11T11:44:39.706Z</updated>
+    <updated>2025-06-11T13:10:51.160Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/2020/Flr%E7%9A%84%E4%BA%A7%E5%93%81%E8%A7%82%E5%92%8C%E5%BC%80%E5%8F%91%E8%A7%82/readme/flr.png&quot; alt=&quot;Flr&quot;&gt;&lt;/p&gt;
@@ -446,7 +457,7 @@
     <link href="https://blog.yorkfish.me/2020/Future%E5%92%8CPromise%E7%9A%84%E5%8C%BA%E5%88%AB/readme/"/>
     <id>https://blog.yorkfish.me/2020/Future%E5%92%8CPromise%E7%9A%84%E5%8C%BA%E5%88%AB/readme/</id>
     <published>2020-05-31T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.741Z</updated>
+    <updated>2025-06-11T13:10:51.196Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Future模型和Promise模型是并发编程领域中的两种相近的异步编程模型，Future和Promise则是并发编程语言分别对Future模型和Promise模型进行实现后的产物。&lt;/p&gt;
@@ -468,7 +479,7 @@
     <link href="https://blog.yorkfish.me/2020/Objective-C%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%EF%BC%9A[self%20class]%20%E4%B8%8E%20[super%20class]/readme/"/>
     <id>https://blog.yorkfish.me/2020/Objective-C%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%EF%BC%9A[self%20class]%20%E4%B8%8E%20[super%20class]/readme/</id>
     <published>2020-05-12T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.741Z</updated>
+    <updated>2025-06-11T13:10:51.196Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这是一道从此篇博客&lt;a href=&quot;https://halfrost.com/objc_runtime_isa_class/&quot;&gt;《神经病院 Objective-C Runtime 入院第一天—— isa 和 Class》&lt;/a&gt;看到的题目：&lt;/p&gt;
@@ -514,7 +525,7 @@
     <link href="https://blog.yorkfish.me/2020/OOP%EF%BC%9A%E6%96%B9%E6%B3%95%EF%BC%88method%EF%BC%89%E5%92%8C%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89%E7%9A%84%E5%8C%BA%E5%88%AB/readme/"/>
     <id>https://blog.yorkfish.me/2020/OOP%EF%BC%9A%E6%96%B9%E6%B3%95%EF%BC%88method%EF%BC%89%E5%92%8C%E5%87%BD%E6%95%B0%EF%BC%88function%EF%BC%89%E7%9A%84%E5%8C%BA%E5%88%AB/readme/</id>
     <published>2020-05-05T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.741Z</updated>
+    <updated>2025-06-11T13:10:51.196Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在面向对象领域中，方法（method）和函数（function）有什么区别和关联呢？&lt;/p&gt;
@@ -562,7 +573,7 @@
     <link href="https://blog.yorkfish.me/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/"/>
     <id>https://blog.yorkfish.me/2020/%E4%B8%BA%E4%BD%95%E9%87%8D%E5%90%AF%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9F/readme/</id>
     <published>2020-05-01T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.743Z</updated>
+    <updated>2025-06-11T13:10:51.198Z</updated>
     
     
       
@@ -590,7 +601,7 @@
     <link href="https://blog.yorkfish.me/2020/Why%20has%20Class-MetaClass%20design%20in%20Objective-C%EF%BC%9F/readme/"/>
     <id>https://blog.yorkfish.me/2020/Why%20has%20Class-MetaClass%20design%20in%20Objective-C%EF%BC%9F/readme/</id>
     <published>2020-04-25T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.741Z</updated>
+    <updated>2025-06-11T13:10:51.196Z</updated>
     
     
       
@@ -620,7 +631,7 @@
     <link href="https://blog.yorkfish.me/2020/Windows%E4%B8%8EUnix:Linux%E7%9A%84%E5%8C%BA%E5%88%AB/readme/"/>
     <id>https://blog.yorkfish.me/2020/Windows%E4%B8%8EUnix:Linux%E7%9A%84%E5%8C%BA%E5%88%AB/readme/</id>
     <published>2020-04-22T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.742Z</updated>
+    <updated>2025-06-11T13:10:51.196Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;在产品层面，Windows与Unix-Linux的区别&quot;&gt;&lt;a href=&quot;#在产品层面，Windows与Unix-Linux的区别&quot; class=&quot;headerlink&quot; title=&quot;在产品层面，Windows与Unix/Linux的区别&quot;&gt;&lt;/a&gt;在产品层面，Windows与Unix/Linux的区别&lt;/h2&gt;&lt;p&gt;在产品层面上，Windows与Unix/Linux的区别主要体现在二者服务的对象和应用场景上：&lt;/p&gt;
@@ -650,7 +661,7 @@
     <link href="https://blog.yorkfish.me/2020/%E5%90%8C%E6%AD%A5(synchronous):%E5%BC%82%E6%AD%A5(asynchronous)%E8%B0%83%E7%94%A8%E5%92%8C%E9%98%BB%E5%A1%9E(blocking):%E9%9D%9E%E9%98%BB%E5%A1%9E(non-blocking)%E8%B0%83%E7%94%A8/readme/"/>
     <id>https://blog.yorkfish.me/2020/%E5%90%8C%E6%AD%A5(synchronous):%E5%BC%82%E6%AD%A5(asynchronous)%E8%B0%83%E7%94%A8%E5%92%8C%E9%98%BB%E5%A1%9E(blocking):%E9%9D%9E%E9%98%BB%E5%A1%9E(non-blocking)%E8%B0%83%E7%94%A8/readme/</id>
     <published>2020-04-16T02:10:01.000Z</published>
-    <updated>2025-06-11T11:44:39.744Z</updated>
+    <updated>2025-06-11T13:10:51.199Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文主要介绍同步(synchronous)/异步(asynchronous)调用和阻塞(blocking)/非阻塞(non-blocking)调用的概念以及在现实中会出现的组合场景。&lt;/p&gt;</summary>
