@@ -189,6 +189,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2025/Swift%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%85%B3%E8%81%94%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%AB%98%E5%86%85%E8%81%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/left-v.jpg">
+      <meta itemprop="name" content="YorkFish">
+      <meta itemprop="description" content="Keep IT Simple & Stupid">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YorkFish Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/Swift%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%85%B3%E8%81%94%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%AB%98%E5%86%85%E8%81%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/" class="post-title-link" itemprop="url">Swift之基于关联协议的高内聚数据类型系统设计</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-06-11 12:34:56 / Modified: 19:44:39" itemprop="dateCreated datePublished" datetime="2025-06-11T12:34:56+08:00">2025-06-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今年在找工作，回顾之前在网易做的赢彩票项目时，发现到现在业内在网上也没有出现像我那样基于 <code>Swift 关联协议</code> 去实现的一个高内聚的数据类型系统的 Case，所以在此分享一下我在该项目基于 <code>Swift 关联协议</code> 的高内聚的数据类型系统：彩票数据类型系统。</p>
+<p>这里先简单介绍一下业务背景吧：该项目需要接入大量的彩票，然后我如下图基于生物分类法对彩票进行了分类，然后以<code>彩票属</code>为业务单元构建<code>命名空间（NameSpace）</code>，<code>命名空间（NameSpace）</code>内部收敛存放该<code>彩票属</code>下的<code>彩票种</code>的具体类型、玩法类型、以及通用的业务逻辑模块（此处的「通用」是指同一个<code>彩票属</code>的<code>彩票种</code>的业务逻辑是一样的，如解析逻辑、选号逻辑、计费逻辑等）。</p>
+<p><img src="/2025/Swift%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%85%B3%E8%81%94%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%AB%98%E5%86%85%E8%81%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/readme/lottery_classification.png" alt="img"></p>
+<p>存在多个<code>彩票属</code>的情况下，这时候必然需要构建一个协议保证每个具体的<code>彩票属</code>类型的内部实现是一致的，比如内部必须有具体的<code>彩票种</code>类型，具体的玩法类型等。这时候则是通过 <code>Swift</code> 的关联协议实现的。下面是一个简略版的彩票数据类型系统实现代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Demo.swift</span></span><br><span class="line"><span class="comment">//  ProgrammableNamespaceDemo</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by YorkFish on 2025/6/11.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: LotterySpecies-彩票种</span></span><br><span class="line"><span class="comment">/// 彩票属（Genus）类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">LotteryGenusType</span>: <span class="title class_ inherited__">String</span> &#123;</span><br><span class="line">    <span class="comment">/// 未知彩票属</span></span><br><span class="line">    <span class="keyword">case</span> unknown</span><br><span class="line">    <span class="comment">/// 双色球</span></span><br><span class="line">    <span class="keyword">case</span> ssq</span><br><span class="line">    <span class="comment">/// 快三</span></span><br><span class="line">    <span class="keyword">case</span> k3</span><br><span class="line">    <span class="comment">/// 胜负彩</span></span><br><span class="line">    <span class="keyword">case</span> sfc</span><br><span class="line">    <span class="comment">/// 排列五</span></span><br><span class="line">    <span class="keyword">case</span> plw</span><br><span class="line">    <span class="comment">/// 其他等等</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 彩票种类key协议</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="title class_">LotterySpeciesKeyProtocol</span>: <span class="title class_ inherited__">Hashable</span>, <span class="title class_ inherited__">Equatable</span>, <span class="title class_ inherited__">RawRepresentable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 返回当前LotterySpeciesKey类型的所有case</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> allCases: [<span class="keyword">Self</span>] &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 彩票种类协议</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="title class_">LotterySpeciesTypeProtocol</span>: <span class="title class_ inherited__">CustomStringConvertible</span> &#123;</span><br><span class="line">    <span class="comment">/// 生成 LotterySpeciesDefaultInstance（彩票种默认实例）</span></span><br><span class="line">    <span class="comment">///</span></span><br><span class="line">    <span class="comment">/// - Important: 实例的 speciesKey 默认取第一个枚举值；实例的 lotteryId 默认取 speciesKey 对应的LotterySpecies（彩票种）配置的 supportedIds 里的最小ID；</span></span><br><span class="line">    <span class="keyword">init</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 根据 lotteryId 生成 LotterySpeciesInstance（彩票种实例）</span></span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">lotteryId</span>: <span class="type">Int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 获取 LotterySpeciesInstance（彩票种实例）支持的彩种Id集合</span></span><br><span class="line">    <span class="keyword">var</span> supportedIds: <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 获取当前 LotterySpeciesInstance（彩票种实例）的Id</span></span><br><span class="line">    <span class="keyword">var</span> lotteryId: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 获取当前 LotterySpeciesInstance（彩票种实例）的名称</span></span><br><span class="line">    <span class="keyword">var</span> lotteryName: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前 LotterySpeciesInstance（彩票种实例）的默认 GamePlay</span></span><br><span class="line">    <span class="keyword">var</span> defaultGamePlay: <span class="type">GamePlayType</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 获取当前 LotterySpeciesInstance（彩票种实例）的 LotteryGenusType（彩票属类型）</span></span><br><span class="line">    <span class="keyword">var</span> lotteryGenusType: <span class="type">LotteryGenusType</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Tips: 省略了其他如 Equatable、Hashable 等协议实现，以及其他业务逻辑</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extension</span> <span class="title class_">LotterySpeciesTypeProtocol</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;LotterySpeciesName:<span class="subst">\(<span class="keyword">self</span>.lotteryName)</span><span class="subst">\n</span>&#123;lotteryId:<span class="subst">\(<span class="keyword">self</span>.lotteryId)</span>,supportedLotteryIds:<span class="subst">\(<span class="keyword">self</span>.supportedIds)</span>&#125;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: GamePlayType-彩票属玩法</span></span><br><span class="line"><span class="comment">/// “彩票属的玩法”数据类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="title class_">GamePlayType</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 根据gamePlayId生成具体的gamePlay</span></span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">gamePlayId</span>: <span class="type">Int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> gamePlayId: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">var</span> gamePlayName: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Tips: 省略了其他如 Equatable、Hashable 等协议实现，以及其他业务逻辑</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: LotteryGenus-彩票属</span></span><br><span class="line"><span class="keyword">protocol</span> <span class="title class_">LotteryGenusContentProtocol</span> &#123;</span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">LotterySpeciesKey</span>: <span class="type">LotterySpeciesKeyProtocol</span></span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">LotterySpecies</span>: <span class="type">LotterySpeciesTypeProtocol</span></span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">GamePlay</span>: <span class="type">GamePlayType</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Tips: 省略了如 解析逻辑、选号逻辑、计费逻辑等通用逻辑和其他</span></span><br><span class="line">    <span class="comment">/// 解析投注号码</span></span><br><span class="line">    <span class="comment">///</span></span><br><span class="line">    <span class="comment">/// - Parameter betCode: 投注号码</span></span><br><span class="line">    <span class="comment">/// - Returns: 模型</span></span><br><span class="line">    <span class="comment">// func parseToAnnouncementData(betCode: String) -&gt; LotteryBetModel?</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// fake namespace &quot;Lottery.Category&quot;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">LotteryCategory</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extension</span> <span class="title class_">LotteryCategory</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">Ssq</span>: <span class="title class_ inherited__">LotteryGenusContentProtocol</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">LotterySpeciesKey</span>: <span class="title class_ inherited__">String</span>, <span class="title class_ inherited__">LotterySpeciesKeyProtocol</span> &#123;</span><br><span class="line">            <span class="comment">/// 双色球</span></span><br><span class="line">            <span class="keyword">case</span> ssq</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> allCases: [<span class="type">LotterySpeciesKey</span>] &#123;</span><br><span class="line">                <span class="keyword">return</span> [.ssq]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">internal</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="title function_">localSupportedIdsOfGenus</span>() -&gt; <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">internal</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="title function_">localSupportedIdsOfSpecies</span>(<span class="keyword">_</span> <span class="params">speciesKey</span>: <span class="type">LotterySpeciesKey</span>) -&gt; <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; &#123;</span><br><span class="line">            <span class="keyword">switch</span> speciesKey &#123;</span><br><span class="line">            <span class="keyword">case</span> .ssq:</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">LotterySpecies</span>: <span class="title class_ inherited__">LotterySpeciesTypeProtocol</span> &#123;</span><br><span class="line">            <span class="keyword">internal</span> <span class="keyword">var</span> instLotteryId: <span class="type">Int</span></span><br><span class="line">            <span class="keyword">internal</span> <span class="keyword">var</span> instSpeciesKey: <span class="type">LotterySpeciesKey</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">internal</span> <span class="keyword">init</span>(<span class="params">lotteryId</span>: <span class="type">Int</span>, <span class="params">speciesKey</span>: <span class="type">LotterySpeciesKey</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.instLotteryId <span class="operator">=</span> lotteryId</span><br><span class="line">                <span class="keyword">self</span>.instSpeciesKey <span class="operator">=</span> speciesKey</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">                <span class="keyword">let</span> speciesKey <span class="operator">=</span> <span class="type">LotterySpeciesKey</span>.ssq</span><br><span class="line">                <span class="keyword">let</span> lotteryId <span class="operator">=</span> <span class="type">Ssq</span>.localSupportedIdsOfSpecies(speciesKey).sorted()[<span class="number">0</span>]</span><br><span class="line">                <span class="keyword">self</span>.<span class="keyword">init</span>(lotteryId: lotteryId, speciesKey: speciesKey)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">init</span>(<span class="params">speciesKey</span>: <span class="type">LotterySpeciesKey</span>) &#123;</span><br><span class="line">                <span class="keyword">let</span> lotteryId <span class="operator">=</span> <span class="type">Ssq</span>.localSupportedIdsOfSpecies(speciesKey).sorted()[<span class="number">0</span>]</span><br><span class="line">                <span class="keyword">self</span>.<span class="keyword">init</span>(lotteryId: lotteryId, speciesKey: speciesKey)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">init?</span>(<span class="params">lotteryId</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">                <span class="keyword">let</span> allSpeciesKey <span class="operator">=</span> <span class="type">LotterySpeciesKey</span>.allCases</span><br><span class="line">                <span class="keyword">for</span> key <span class="keyword">in</span> allSpeciesKey &#123;</span><br><span class="line">                    <span class="keyword">if</span> <span class="type">Ssq</span>.localSupportedIdsOfSpecies(key).contains(lotteryId) &#123;</span><br><span class="line">                        <span class="keyword">self</span>.<span class="keyword">init</span>(lotteryId: lotteryId, speciesKey: key)</span><br><span class="line">                        <span class="keyword">return</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> supportedIds: <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="type">Ssq</span>.localSupportedIdsOfSpecies(<span class="keyword">self</span>.instSpeciesKey)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> lotteryId: <span class="type">Int</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">self</span>.instLotteryId</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> speciesKey: <span class="type">LotterySpeciesKey</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">self</span>.instSpeciesKey</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> lotteryName: <span class="type">String</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> <span class="keyword">self</span>.instSpeciesKey &#123;</span><br><span class="line">                <span class="keyword">case</span> .ssq:</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;双色球&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> defaultGamePlay: <span class="type">GamePlayType</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="type">Ssq</span>.<span class="type">GamePlay</span>.general</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> lotteryGenusType: <span class="type">LotteryGenusType</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="type">LotteryGenusType</span>.ssq</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">GamePlay</span>: <span class="title class_ inherited__">Int</span>, <span class="title class_ inherited__">GamePlayType</span> &#123;</span><br><span class="line">            <span class="comment">/// 普通</span></span><br><span class="line">            <span class="keyword">case</span> general <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">init?</span>(<span class="params">gamePlayId</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.<span class="keyword">init</span>(rawValue: gamePlayId)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> gamePlayId: <span class="type">Int</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">self</span>.rawValue</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">var</span> gamePlayName: <span class="type">String</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> .general:</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;普通&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: Test</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">test</span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> lotterySpecies <span class="operator">=</span> <span class="type">LotteryCategory</span>.<span class="type">Ssq</span>.<span class="type">LotterySpecies</span>.<span class="keyword">init</span>()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;cur lotterySpecies details:<span class="subst">\n</span><span class="subst">\(lotterySpecies)</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上的 Demo 地址：<a target="_blank" rel="noopener" href="https://github.com/YK-Unit/ProgrammableNamespaceDemo">https://github.com/YK-Unit/ProgrammableNamespaceDemo</a></p>
+</blockquote>
+<p>结合以上代码看，你或许能看到，高内聚的数据类型系统的实现是在 <code>Swift</code> 的关联协议的基础上结合以下特别的工程手段达成的：</p>
+<ol>
+<li>在一级协议内（如代码中的<code>彩票属</code>内容协议<code>LotteryGenusContentProtocol</code>）通过关联类型定义内聚的数据类型的协议（如代码中的<code>associatedtype LotterySpeciesKey</code>）</li>
+<li>实现一级协议的具体数据类型（如代码中的<code>Ssq</code>彩票属）里实现具体的内聚的数据类型（如代码中的<code>Ssq</code>彩票属里的<code>public enum LotterySpeciesKey</code>）</li>
+</ol>
+<p>如果你也需要实现一个高内聚的数据类型系统，不妨参考上述的工程思路。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2025/%E5%85%B3%E4%BA%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B2%89%E6%B7%80%E6%80%A7%E6%80%9D%E8%80%83/readme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +302,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,7 +386,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -422,7 +504,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -527,7 +609,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -623,7 +705,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -712,7 +794,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -815,7 +897,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -929,7 +1011,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1131,7 +1213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
+                <time title="Modified: 2025-06-11 19:44:39" itemprop="dateModified" datetime="2025-06-11T19:44:39+08:00">2025-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1329,88 +1411,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.yorkfish.me/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/left-v.jpg">
-      <meta itemprop="name" content="YorkFish">
-      <meta itemprop="description" content="Keep IT Simple & Stupid">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YorkFish Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/" class="post-title-link" itemprop="url">当用户第一次点击App（App启动流程）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-27 10:10:01" itemprop="dateCreated datePublished" datetime="2020-07-27T10:10:01+08:00">2020-07-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-27 12:24:06" itemprop="dateModified" datetime="2025-05-27T12:24:06+08:00">2025-05-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%A4%8D%E7%9B%98/" itemprop="url" rel="index"><span itemprop="name">知识复盘</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当用户第一次点击iPhone手机屏幕上的一个App 图标时，该APP将会被iOS加载启动起来。</p>
-<p>下面将会讲述这加载启动背后的相关知识点，比如：</p>
-<ul>
-<li>App的启动类型</li>
-<li>App冷启动的完整过程</li>
-<li>App的冷启动优化手段</li>
-<li>可执行文件的介绍</li>
-</ul>
-<p><img src="/2020/%E5%BD%93%E7%94%A8%E6%88%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%82%B9%E5%87%BBApp%EF%BC%88App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%89/readme/iOS-App-Launch.svg" alt="image"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1482,7 +1482,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
